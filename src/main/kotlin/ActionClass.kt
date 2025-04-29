@@ -8,12 +8,9 @@ abstract class  ActionClass {
     abstract fun add()
 
     fun addArchive (){
-        while (true) {
-            println("Введите название архива")
-            val archiveName = readInputEmpty("Название архива")
-            listOfInclude.add(Archive(archiveName))
-            break
-        }
+        println("Введите название архива")
+        val archiveName = readInputEmpty("Название архива")
+        listOfInclude.add(Archive(archiveName))
     }
 
     fun addTextNotes ():String{
@@ -23,23 +20,12 @@ abstract class  ActionClass {
     }
 
     fun addNotes (){
-            println("Введите название заметки")
-            val notesName = readInputEmpty("Название заметки")
-            println("Введите текст заметки")
-            val notesText = readInputEmpty("Текст заметки")
-            listOfInclude.add(Notes(notesName, notesText))
+        println("Введите название заметки")
+        val notesName = readInputEmpty("Название заметки")
+        println("Введите текст заметки")
+        val notesText = readInputEmpty("Текст заметки")
+        listOfInclude.add(Notes(notesName, notesText))
     }
-    private fun readInput():Int{
-         while (true) {
-             val selectionString = Scanner(System.`in`).nextLine()
-             if (selectionString.isNotEmpty()&&selectionString.all { it.isDigit() }) {
-                 return selectionString.toInt()
-             } else {
-                 println("Необходимо ввести цифру!")
-                 continue
-             }
-         }
-     }
 
     private fun readInputEmpty(messageText: String):String{
         while (true) {
@@ -48,12 +34,12 @@ abstract class  ActionClass {
                 return selectionString
             } else {
                 println("$messageText не может быть пустым!")
-                continue
             }
         }
     }
 
-    fun showScreen(){
+    fun showScreen(menu0Text: String){
+        println (menu0Text)
         val sizeList:Int = listOfInclude.size-1
         for (i in 0..sizeList){
             println("${i+1}. ${listOfInclude[i]}")
@@ -68,7 +54,8 @@ abstract class  ActionClass {
 
     fun choice(){
         while (true) {
-            when(val selection: Int = readInput()) {
+            when(val selection: Int? = Scanner(System.`in`).nextLine().toIntOrNull()) {
+                null -> println("Необходимо ввести цифру!")
                 0-> add()
                 in 1..listOfInclude.size -> selectItem(selection-1)
                 listOfInclude.size + 1 -> break

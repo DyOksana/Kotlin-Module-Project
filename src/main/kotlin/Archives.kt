@@ -3,9 +3,7 @@ class Archives: ActionClass(){
         addArchive()
     }
     override fun show(){
-        println("Список архивов:")
-        println ("0. Создать архив")
-        showScreen()
+        showScreen("Список архивов:\n0. Создать архив")
     }
 
 }

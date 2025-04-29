@@ -6,9 +6,7 @@ class Archive(private val name: String): ActionClass() {
         return name
     }
     override fun show(){
-        println("Список заметок архива $name:")
-        println ("0. Создать заметку")
-        showScreen()
+        showScreen("Список заметок архива $name:\n0. Создать заметку")
     }
 
 }
