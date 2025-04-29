@@ -1,3 +1,7 @@
 fun main(args: Array<String>) {
-    println("Hello World!")
+    val slim: ActionClass = Archives()
+    slim.show()
+    slim.choice()
 }
+
+
